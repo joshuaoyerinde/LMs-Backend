@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ AdminRegistrationController;
 use App\Http\Controllers\Admin\AdminLoginController;
+use App\Http\Controllers\Tutors\AddCourseController;
 // use 
 /*
 |--------------------------------------------------------------------------
@@ -38,8 +39,9 @@ Route::group([
     // admin routes
     Route::post('adminreg', [AdminRegistrationController::class, 'registerAdmin']);
     Route::post('adminlogin', [AdminLoginController::class, 'adminLogin']);
+    Route::post('createcourse', [AddCourseController::class, 'addCourse']);
     // ........
-
+    
     Route::post('logout', 'App\Http\Controllers\AuthController@logout');
     Route::post('refresh', 'App\Http\Controllers\AuthController@refresh');
     Route::post('me', 'App\Http\Controllers\AuthController@me');

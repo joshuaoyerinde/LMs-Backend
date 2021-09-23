@@ -23,4 +23,8 @@ class Courses extends Model
     {
         return $this->hasMany(CourseHistoryController::class);
     }
+    // for fie handling.....
+    public function courseFile(){
+        return $this->hasMany(AddCourseController::class);
+    }
 }

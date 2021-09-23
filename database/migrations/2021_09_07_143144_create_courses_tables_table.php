@@ -19,7 +19,6 @@ class CreateCoursesTablesTable extends Migration
             $table->string('course_desc');
             $table->bigInteger('admin_id')->unsigned();
             $table->timestamps();
-            // from admin reg_table.....
             $table->foreign('admin_id')->references('id')->on('admin_reg_tables')->ondelete('cascade');
         });
     }
