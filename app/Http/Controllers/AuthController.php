@@ -33,32 +33,10 @@ class AuthController extends Controller
 
         if (! $token = auth()->attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
-          
         } 
         return $this->respondWithToken($token);
     }
-    // public function create(Request $data)
-    // {
-
-    //     $this->validate($data, [
-    //         'firstname' => ['required', 'string', 'max:255'],
-    //         'lastname' => ['required', 'string', 'max:255'],
-    //         'phone' => ['required', 'string', 'max:255'],
-    //         'skill' => ['required', 'string', 'max:255'],
-    //         'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-    //         'level' => ['required', 'string', 'max:150'],
-    //         'password' => ['required', 'string', 'min:8'],
-
-    //     ]);
-    //   $user = User::create([
-    //         'username' => $data->username,
-    //         'fullname' => $data->fullname,
-    //         'email' => $data->email,
-    //         'password' => Hash::make($data->password),
-    //     ]);
-    //     return $this->login();
-    // }
-
+    
     /**
      * Get the authenticated User.
      *
@@ -101,7 +79,7 @@ class AuthController extends Controller
     protected function respondWithToken($token)
     {
         return response()->json([
-            'access_token' => $token,
+            'access_token' => $token,   
             'token_type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 60
         ]);

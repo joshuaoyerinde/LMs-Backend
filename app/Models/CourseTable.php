@@ -12,12 +12,13 @@ class CourseTable extends Model
     protected $id = 'id';
 
     protected $table = "courses_historys";
-
+    
     public function userinfo()
     {
         return $this->belongTo(RegisterController::class);
     }
 
+    // taking a perticular course
     public function couserTaking()
     {
         return $this->belongTo(CoursesController::class);

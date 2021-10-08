@@ -7,6 +7,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ AdminRegistrationController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Tutors\AddCourseController;
+use App\Http\Controllers\Tutors\CourseListController; 
 // use 
 /*
 |--------------------------------------------------------------------------
@@ -37,9 +38,14 @@ Route::group([
     Route::post('verify', [RegisterController::class, 'verifyemail']);
     
     // admin routes
+    Route::post('create', [CourseListController::class,'crearteListOfCourse']);
+    Route::get('getcourses', [CourseListController::class,'getcourseList']);
+    
     Route::post('adminreg', [AdminRegistrationController::class, 'registerAdmin']);
     Route::post('adminlogin', [AdminLoginController::class, 'adminLogin']);
     Route::post('createcourse', [AddCourseController::class, 'addCourse']);
+    // getCourses
+    Route::get('fetchcourses', [AddCourseController::class, 'getCourses']);
     // ........
     
     Route::post('logout', 'App\Http\Controllers\AuthController@logout');

@@ -4,19 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use  App\Models\Courses;
-
-class Filemodel extends Model
+use  App\Models\Courses; 
+class CourseList extends Model
 {
     use HasFactory;
 
     protected $id = 'id';
 
-    protected $table = "course_file_table";
+    protected $table = 'courses_list';
+
     protected $fillable = [
-        'file_name'
+        'course_name'
     ];
-    public function course(){
-        return $this->belongTo(Courses::class);
+
+    public function courses(){
+        return $this->hasMany(Courses::class,'coursesListId');
     }
 }

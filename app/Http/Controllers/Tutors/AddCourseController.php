@@ -10,18 +10,12 @@ use App\Models\ Filemodel;
 class AddCourseController extends Controller
 {
     public function addCourse(Request $request){
-        $id = 2;
+        $id = 3;
         $course = Courses::insertGetId([
-            'course_name' => $request->coursename,
-            'course_desc' => $request->coursename,
+            'coursesListId' => $request->courseListid,
+            'course_desc' => $request->desciption,
             'admin_id' => $id
         ]);
-        // $course = new Courses;
-        // $id = 123;
-        // $course->course_name = $request->coursename;
-        // $course->course_desc = $request->desciption;
-        // $course->admin_id = $id;
-        // $course->insertGetId();
         if ($course) {            
             # code...
             $fileName = $request->file('file_upload')->getClientOriginalName();
@@ -34,5 +28,12 @@ class AddCourseController extends Controller
             // $upload->save();
             return response()->json(['sucesss'=>'Upload successfully']);
         }
+    }
+    public function getCourses(){
+        return Courses::with('courseFile')->get();
+        // return Courses::join('course_file_table','course_file_table.course_id','=', 'courses_tables.id')
+        //                     ->join('admin_reg_tables','admin_reg_tables.id', '=', 'courses_tables.admin_id')
+        //                     ->where('courses_tables.admin_id',2,)
+        //                     ->get(['courses_tables.*','course_file_table.*']);
     }
 }

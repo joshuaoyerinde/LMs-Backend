@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class FileTable extends Migration
+class Courses extends Migration
 {
     /**
      * Run the migrations.
@@ -14,13 +14,10 @@ class FileTable extends Migration
     public function up()
     {
         //
-        Schema::create('course_file_table', function (Blueprint $table) {
+        Schema::create('courses_list', function(Blueprint $table){
             $table->id();
-            $table->string('file_name');
-            $table->bigInteger('course_id')->unsigned();
+            $table->string('course_name');
             $table->timestamps();
-            // from admin reg_table.....
-            $table->foreign('course_id')->references('id')->on('courses_tables')->ondelete('cascade');
         });
     }
 
@@ -32,6 +29,6 @@ class FileTable extends Migration
     public function down()
     {
         //
-        Schema::dropIfExists('course_file_table');
+        Schema::dropIfExists('courses_list_tables');
     }
 }
