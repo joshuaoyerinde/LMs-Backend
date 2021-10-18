@@ -115,5 +115,4 @@ class RegisterController extends Controller
         $findUser = $user->where('token', $tokenToString)->get();
         return $findUser;
     }
-
 }

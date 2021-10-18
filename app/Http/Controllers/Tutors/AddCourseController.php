@@ -14,7 +14,8 @@ class AddCourseController extends Controller
         $course = Courses::insertGetId([
             'coursesListId' => $request->courseListid,
             'course_desc' => $request->desciption,
-            'admin_id' => $id
+            'admin_id' => $id,
+            'course_price'=>$request->price
         ]);
         if ($course) {            
             # code...

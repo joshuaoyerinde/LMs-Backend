@@ -23,6 +23,7 @@ class CreateCoursesTablesTable extends Migration
             ->constrained('courses_list')
             ->onUpdate('cascade')
             ->onDelete('cascade');
+            $table->string('course_price');
            
         });
     }
